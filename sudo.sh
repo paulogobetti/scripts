@@ -11,5 +11,3 @@ apt update && apt dist-upgrade -y
 apt autoclean
 apt autoremove -y
 
-
-https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/sudo2.sh && chmod +x sudo2.sh && ./sudo2.sh
