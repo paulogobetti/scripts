@@ -5,24 +5,29 @@
 # echo "$(sudo )"
 #
 
-echo "$(sudo apt update && sudo apt upgrade -y)"
+# apt install sudo wget
+# wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/teste.sh && chmod +x teste.sh && sudo teste.sh
 
-echo "$(sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash wget -y)"
+sudo rm /var/lib/dpkg/lock-frontend; sudo rm /var/cache/apt/archives/lock;
 
-echo "$(sudo usermod -aG docker $USER)"
+sudo apt update && sudo apt upgrade -y
 
-echo "$(sudo ufw default deny incoming)"
-echo "$(sudo ufw default allow outgoing)"
-echo "$(sudo ufw allow 22 && sudo ufw allow 80 && sudo ufw allow 8443)"
+sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget -y
 
-echo "$(sudo ufw enable)"
+sudo usermod -aG docker $USER
 
-echo "$(sudo systemctl enable docker)"
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22 && sudo ufw allow 80 && sudo ufw allow 8443
 
-echo "$(docker run --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest)"
+sudo ufw enable -y
 
-echo "$(sudo chown $USER:$USER /home/$USER/.git -R)"
+sudo systemctl enable docker
 
-echo "$(sudo chmod 777 /home/$USER/.git -R)"
+sudo docker run -d --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest
+
+sudo chown $USER:$USER /home/$USER/.git -R
+
+sudo chmod 777 /home/$USER/.git -R
 
 echo "Instalação finalizada com sucesso. Reinicie o dispositivo para que todas as modificações entrem em vigor."
