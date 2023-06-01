@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
 
+# Dividir o script em duas partes, a primeira para baixar e instalar o sudo, a segunda para instalar e configurar o workspace.
+
 # VARIÁVEIS
 # Definir variáveis para apps.
-APPS_APT_INSTALL=( ufw sudo ssh openssh-client git docker.io docker-compose )
-DOCKER_APPS=( 'php:8.1.19-apache-bullseye', 'linuxserver/code-server:latest' )
-VSCODE_LIBS=(libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash curl wget)
-LARAVEL_EXAMPLE_APP="$(curl -s "https://laravel.build/example-app?with=mysql,redis" | bash)"
+#APPS_APT_INSTALL=( ufw sudo ssh openssh-client git docker.io docker-compose )
+#DOCKER_APPS=( 'php:8.1.19-apache-bullseye', 'linuxserver/code-server:latest' )
+#VSCODE_LIBS=(libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash curl wget)
+#LARAVEL_EXAMPLE_APP="$(curl -s "https://laravel.build/example-app?with=mysql,redis" | bash)"
 
 # Capturar IP local.
-HOST_IP="$(hostname -I | cut -f1 -d' ')"
+#HOST_IP="$(hostname -I | cut -f1 -d' ')"
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 # Remover arquivos lock para evitar que o script seja interrompido.
+# wget e sudo
+# su
+
 sudo rm /var/lib/dpkg/lock-frontend; sudo rm /var/cache/apt/archives/lock;
 
 sudo apt update && sudo apt upgrade -y
 
-sudo apt install sudo curl ufw ssh openssh-client git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash wget -y
+sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash wget -y
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
