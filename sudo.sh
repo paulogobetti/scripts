@@ -9,6 +9,8 @@ rm /var/cache/apt/archives/lock;
 
 apt install sudo -y & sudo usermod -aG sudo $USER
 
+echo "$(whoami)"
+
 exit
 
 echo "$(whoami)"
