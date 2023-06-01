@@ -12,32 +12,12 @@ HOST_IP="$(hostname -I | cut -f1 -d' ')"
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-# DEPENDÊNCIAS
-# Elevar privilégio e instalar dependências.
-su
-
 # Remover arquivos lock para evitar que o script seja interrompido.
-rm /var/lib/dpkg/lock-frontend; rm /var/cache/apt/archives/lock;
+sudo rm /var/lib/dpkg/lock-frontend; sudo rm /var/cache/apt/archives/lock;
 
-apt update && apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 
-apt install sudo -y
-apt install ufw -y
-apt install ssh -y
-apt install openssh-client -y
-apt install git -y
-apt install docker.io -y
-apt install docker-compose -y
-apt install apt-utils -y
-apt install php-xml -y
-apt install libc6 -y
-apt install libstdc++6 -y
-apt install python-minimal -y
-apt install ca-certificates -y
-apt install tar -y
-apt install openssh-server -y
-apt install bash -y
-apt install wget -y
+sudo apt install sudo curl ufw ssh openssh-client git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash wget -y
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -65,9 +45,9 @@ sudo usermod -aG sudo $USER
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 # DOCKER CONFIG
-# Configurar Docker e Workspace.
+# Configurar Docker e Workspace com VSCode.
 # Habilitar Docker na inicialização do sistema.
-systemctl enable docker
+sudo systemctl enable docker
 
 # Instalar VSCode Server.
 docker run --name vscode -p 8443:8443 -v $HOME/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest
