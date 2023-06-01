@@ -7,9 +7,9 @@ rm /var/cache/apt/archives/lock -y
 
 apt install sudo -y & sudo usermod -aG sudo $USER
 
-echo "$(whoami)"
+TESTE="$(whoami)" && echo $TESTE
 
 exit
 
-echo "$(whoami)"
+TESTE="$(whoami)" && echo $TESTE
 
