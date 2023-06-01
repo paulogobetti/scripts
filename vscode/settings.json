@@ -1,0 +1,14 @@
+{
+    "workbench.colorTheme": "GitHub Dark High Contrast",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "editor.wordWrap": "on",
+    "breadcrumbs.enabled": false,
+    "terminal.integrated.enablePersistentSessions": false,
+    "workbench.startupEditor": "none",
+    "window.restoreWindows": "none",
+    "telemetry.telemetryLevel": "off",
+    "editor.codeLens": false,
+    "emmet.showSuggestionsAsSnippets": true,
+    "editor.renderLineHighlight": "gutter"
+}
