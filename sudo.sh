@@ -12,4 +12,4 @@ TESTE="$(whoami)" && echo $TESTE
 exit
 
 TESTE="$(whoami)" && echo $TESTE
-
+ 
