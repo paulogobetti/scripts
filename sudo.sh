@@ -7,9 +7,7 @@ rm /var/cache/apt/archives/lock
 
 apt install sudo -y & sudo usermod -aG sudo $USER
 
-TESTE="$(whoami)" && echo $TESTE
+apt update && apt dist-upgrade -y
+apt autoclean
+apt autoremove -y
 
-exit
-
-TESTE="$(whoami)" && echo $TESTE
- 
