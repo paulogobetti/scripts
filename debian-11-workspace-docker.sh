@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/teste.sh && chmod +x teste.sh && ./teste.sh
+# wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
+LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 
 sudo rm /var/lib/dpkg/lock-frontend
 sudo rm /var/cache/apt/archives/lock
@@ -23,5 +24,7 @@ sudo chown $USER:$USER /home/$USER/.git -R
 
 sudo chmod 777 /home/$USER/.git -R
 
-echo "Instalação finalizada com sucesso. Reinicie o dispositivo para que todas as modificações entrem em vigor."
+# Falta: Setar IP estático.
+
+echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443."
 
