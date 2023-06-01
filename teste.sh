@@ -19,10 +19,10 @@ echo "$(sudo ufw enable)"
 
 echo "$(sudo systemctl enable docker)"
 
-echo "$(docker run --name vscode -p 8443:8443 -v $HOME/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest)"
+echo "$(docker run --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest)"
 
-echo "$(sudo chown $USER:$USER $HOME/.git -R)"
+echo "$(sudo chown $USER:$USER /home/$USER/.git -R)"
 
-echo "$(sudo chmod 777 $HOME/.git -R)"
+echo "$(sudo chmod 777 /home/$USER/.git -R)"
 
 echo "Instalação finalizada com sucesso. Reinicie o dispositivo para que todas as modificações entrem em vigor."
