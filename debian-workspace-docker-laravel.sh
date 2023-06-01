@@ -20,7 +20,24 @@ su
 rm /var/lib/dpkg/lock-frontend; rm /var/cache/apt/archives/lock;
 
 apt update && apt upgrade -y
-apt install sudo curl ufw ssh openssh-client git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python-minimal ca-certificates tar openssh-server bash wget -y
+
+apt install sudo -y
+apt install ufw -y
+apt install ssh -y
+apt install openssh-client -y
+apt install git -y
+apt install docker.io -y
+apt install docker-compose -y
+apt install apt-utils -y
+apt install php-xml -y
+apt install libc6 -y
+apt install libstdc++6 -y
+apt install python-minimal -y
+apt install ca-certificates -y
+apt install tar -y
+apt install openssh-server -y
+apt install bash -y
+apt install wget -y
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
