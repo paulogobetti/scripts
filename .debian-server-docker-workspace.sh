@@ -4,8 +4,6 @@
 
 APPS_APT_INSTALL=( ufw git sudo docker.io docker-compose )
 
-# APPS_DOCKER_INSTALL=( virtualbox )
-
 # = = = = = = = = = = = = = = S C R I P T = = = = = = = = = = = = = = #
 
 # Adicionar condicional, se su retornar verdadeiro, continuar scrip, se retornar falso, fechar bash.
@@ -19,8 +17,8 @@ apt update && apt upgrade
 apt install sudo ufw git docker.io docker-compose -y
 
 # Verificar range de IP.
-
-# Setar IP estático (usar algum valor que fica no meio do range disponível).
+# Retornar apenas o IP que foi gerado.
+# Editar iptables com IP atual colocando-o como estático.
 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
