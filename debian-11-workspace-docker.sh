@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
+
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 
 sudo rm /var/lib/dpkg/lock-frontend
@@ -18,7 +19,7 @@ sudo ufw enable
 
 sudo systemctl enable docker
 
-docker run -d --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest
+sudo docker run -d --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git linuxserver/code-server:latest
 
 sudo chown $USER:$USER /home/$USER/.git -R
 
