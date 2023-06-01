@@ -40,7 +40,6 @@ sudo ufw enable
 # PERMISSÕES
 # Inserir usuário aos grupos necessários.
 sudo usermod -aG docker $USER
-sudo usermod -aG sudo $USER
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
