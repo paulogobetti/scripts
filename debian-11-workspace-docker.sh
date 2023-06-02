@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
 # wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
-
-# Setar variáveis.
+#
+# # # #
 
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 USER_PASS="$(date | base64)"
@@ -14,6 +14,9 @@ sudo rm /var/cache/apt/archives/lock
 
 # Atualizar sistema.
 sudo apt update && sudo apt upgrade -y
+
+# Fazer download de todos os arquivos necessários: sudo.sh, install.sh, settings.json
+# O Objetivo é evitar o erro do docker cp, pq mesmo com o operador && ele não está "achando" o arquivo depois de ser baixado.
 
 # Instalar dependências e adicionar usuário ao grupo 'docker'.
 sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget -y && sudo usermod -aG docker $USER
@@ -44,4 +47,3 @@ wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/mai
 # Configurar Git.
 
 echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
-

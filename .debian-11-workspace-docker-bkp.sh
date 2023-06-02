@@ -122,4 +122,3 @@ echo "Instalação finalizada com sucesso. Reinicie o dispositivo para que todas
 # FIM
 
 #echo "Instalação finalizada com sucesso. Reinicie o dispositivo para que todas as modificações entrem em vigor."
-

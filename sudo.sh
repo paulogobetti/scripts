@@ -12,4 +12,3 @@ apt install sudo -y && sudo usermod -aG sudo $USER
 apt update && apt dist-upgrade -y
 apt autoclean
 apt autoremove -y
-
