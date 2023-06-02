@@ -18,6 +18,7 @@ sudo apt update && sudo apt upgrade -y
 # Fazer download de todos os arquivos necessários: sudo.sh, install.sh, settings.json
 # O Objetivo é evitar o erro do docker cp, pq mesmo com o operador && ele não está "achando" o arquivo depois de ser baixado.
 
+# Add wp-cli.
 # Instalar dependências e adicionar usuário ao grupo 'docker'.
 sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget -y && sudo usermod -aG docker $USER
 
