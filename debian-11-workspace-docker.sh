@@ -37,13 +37,11 @@ sudo chown $USER:$USER /home/$USER/.git -R
 sudo chmod 777 /home/$USER/.git -R
 
 # Configurar VSCode.
-wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/vscode/settings.json -O /home/$USER/settings.json
-
-sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
+wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/vscode/settings.json -O /home/$USER/settings.json && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
 
 # Setar IP estático.
 
 # Configurar Git.
 
-echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS."
+echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
 
