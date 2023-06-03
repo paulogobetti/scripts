@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
+# wget https://raw.githubusercontent.com/paulogobetti/scripts/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
 #
 # # # #
 
@@ -46,5 +46,8 @@ wget https://raw.githubusercontent.com/paulogobetti/this-is-not-a-repository/mai
 # Setar IP estático.
 
 # Configurar Git.
+git config --global user.name "Paulo Gobetti"
+git config --global user.email "paulogobettig@outlook.com"
+git config --global core.editor nano
 
 echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
