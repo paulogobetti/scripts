@@ -34,25 +34,17 @@ sudo ufw enable
 sudo systemctl enable docker
 
 # Arquivo de configuração do VSCode.
-wget https://raw.githubusercontent.com/paulogobetti/scripts/main/vscode/settings.json -O /home/$USER/settings.json
 
-#mkdir /home/$USER/.workspace
 
-# Futuramente criar um usuário sem permissões para gerenciar os containers.
+# Criar um usuário sem permissões para gerenciar os containers.
 
 # Criar container do VSCode.
-# Setar mesmo ID para todos os containers (para evitar problemas de permiossão).
-#sudo docker run -d --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git -e PASSWORD=$USER_PASS linuxserver/code-server:latest
-sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown www-data:docker /home/$USER/.workspace -R && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
-
 # Alterar propriedade do workspace.
-#sudo chown www-data:docker /home/$USER/.git -R
-
 # Alterar permissão do workspace.
-#sudo chmod 777 /home/$USER/.git -R
+sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown $USER:docker /home/$USER/.workspace -R && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
 
 # Configurar VSCode.
-#sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
+wget https://raw.githubusercontent.com/paulogobetti/scripts/main/.vscode/settings.json -O /home/$USER/settings.json && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
 
 # Setar IP estático.
 
@@ -60,5 +52,9 @@ sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e T
 git config --global user.name "Paulo Gobetti"
 git config --global user.email "paulogobettig@outlook.com"
 git config --global core.editor nano
+
+# Remover arquivos de instalação.
+
+# Remover cache deb.
 
 echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
