@@ -7,6 +7,7 @@
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 USER_PASS="$(date | base64)"
 APT_APPS=( ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget )
+NEW_USER_ID="0000"
 
 # Remover potenciais bloqueios ao gerenciador de pacotes.
 sudo rm /var/lib/dpkg/lock-frontend
@@ -15,10 +16,8 @@ sudo rm /var/cache/apt/archives/lock
 # Atualizar sistema.
 sudo apt update && sudo apt upgrade -y
 
-# Fazer download de todos os arquivos necessários: sudo.sh, install.sh, settings.json
-# O Objetivo é evitar o erro do docker cp, pq mesmo com o operador && ele não está "achando" o arquivo depois de ser baixado.
+# Add WP-CLI.
 
-# Add wp-cli.
 # Instalar dependências e adicionar usuário ao grupo 'docker'.
 sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget -y && sudo usermod -aG docker $USER
 
@@ -33,10 +32,8 @@ sudo ufw enable
 # Habilitar Docker na inicialização.
 sudo systemctl enable docker
 
-# Arquivo de configuração do VSCode.
-
-
 # Criar um usuário sem permissões para gerenciar os containers.
+# Capturar PID com >NEW_USER_ID=$(id nomedousuario)
 
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
@@ -48,7 +45,7 @@ wget https://raw.githubusercontent.com/paulogobetti/scripts/main/.vscode/setting
 
 # Setar IP estático.
 
-# Configurar Git.
+# Configurar Git global.
 git config --global user.name "Paulo Gobetti"
 git config --global user.email "paulogobettig@outlook.com"
 git config --global core.editor nano
