@@ -41,7 +41,7 @@ sudo systemctl enable docker
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
 # Alterar permissão do workspace.
-sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown $USER:docker /home/$USER/.workspace -R && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
+sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown $USER:docker /home/$USER/.workspace -R
 
 # Configurar VSCode.
 wget https://raw.githubusercontent.com/paulogobetti/scripts/main/.vscode/settings.json -O /home/$USER/settings.json && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
