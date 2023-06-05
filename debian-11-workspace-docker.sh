@@ -36,10 +36,14 @@ sudo systemctl enable docker
 # Arquivo de configuração do VSCode.
 wget https://raw.githubusercontent.com/paulogobetti/scripts/main/vscode/settings.json -O /home/$USER/settings.json
 
+#mkdir /home/$USER/.workspace
+
+# Futuramente criar um usuário sem permissões para gerenciar os containers.
+
 # Criar container do VSCode.
 # Setar mesmo ID para todos os containers (para evitar problemas de permiossão).
 #sudo docker run -d --name vscode -p 8443:8443 -v /home/$USER/.git:/.git -e DEFAULT_WORKSPACE=/.git -e PASSWORD=$USER_PASS linuxserver/code-server:latest
-sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace linuxserver/code-server:latest && sudo chown www-data:docker /home/$USER/.git -R && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
+sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown www-data:docker /home/$USER/.workspace -R && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
 
 # Alterar propriedade do workspace.
 #sudo chown www-data:docker /home/$USER/.git -R
