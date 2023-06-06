@@ -67,7 +67,6 @@ git config --global core.editor nano
 #git remote set-url
 
 # Gerar chave SSH.
-# Falta setar o diretório + nome personalizado.
 ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$SSH_PASS" && GITHUB_KEY="$(cat /home/$USER/.ssh/id_ed25519.pub)"
 
 # = = = = = =
@@ -81,3 +80,4 @@ echo "Instalação finalizada com sucesso."
 echo "Não se esqueça das chaves SSH e SSL."
 echo "Anote sua senha e acesse o VSCode em $LOCAL_IP:8443, Senha: $VSCODE_PASS"
 echo "Chave SSH a ser adicionada ao GitHub: $GITHUB_KEY"
+echo "Senha para commits remotos: $SSH_PASS"
