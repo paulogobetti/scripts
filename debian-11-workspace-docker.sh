@@ -68,9 +68,7 @@ git config --global core.editor nano
 
 # Gerar chave SSH.
 # Falta setar o diretório + nome personalizado.
-ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$SSH_PASS"
-
-GITHUB_KEY="$(cat /home/$USER/.ssh/id_ed25519.pub)"
+ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$SSH_PASS" && GITHUB_KEY="$(cat /home/$USER/.ssh/id_ed25519.pub)"
 
 # = = = = = =
 
