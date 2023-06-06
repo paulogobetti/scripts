@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Default High Contrast",
     "editor.minimap.enabled": false,
     "explorer.confirmDragAndDrop": false,
     "editor.wordWrap": "on",
@@ -11,5 +11,6 @@
     "editor.codeLens": false,
     "emmet.showSuggestionsAsSnippets": true,
     "editor.renderLineHighlight": "gutter",
+    "editor.fontSize": 16,
     "workbench.iconTheme": "vs-minimal"
 }
