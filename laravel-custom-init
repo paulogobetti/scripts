@@ -1,3 +1,5 @@
+# curl -s https://raw.githubusercontent.com/paulogobetti/scripts/main/laravel-custom-init | bash
+
 docker info > /dev/null 2>&1
 
 # Ensure that Docker is running...
@@ -33,13 +35,13 @@ NC='\033[0m'
 
 echo -e "${BOLD}Thank you! We hope you build something incredible. Dive in with:${NC} cd opencommerce && ./vendor/bin/sail up"
 
-#if sudo -n true 2>/dev/null; then
-#    sudo chown -R $USER: .
-#    echo -e "${BOLD}Get started with:${NC} cd opencommerce && ./vendor/bin/sail up"
-#else
-#    echo -e "${BOLD}Please provide your password so we can make some final adjustments to your application's permissions.${NC}"
-#    echo ""
-#    sudo chown -R $USER: .
-#    echo ""
-#    echo -e "${BOLD}Thank you! We hope you build something incredible. Dive in with:${NC} cd opencommerce && ./vendor/bin/sail up"
-#fi
+if sudo -n true 2>/dev/null; then
+    sudo chown -R $USER: .
+    echo -e "${BOLD}Get started with:${NC} cd opencommerce && ./vendor/bin/sail up"
+else
+    echo -e "${BOLD}Please provide your password so we can make some final adjustments to your application's permissions.${NC}"
+    echo ""
+    sudo chown -R $USER: .
+    echo ""
+    echo -e "${BOLD}Thank you! We hope you build something incredible. Dive in with:${NC} cd opencommerce && ./vendor/bin/sail up"
+fi

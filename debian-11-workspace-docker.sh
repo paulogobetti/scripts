@@ -7,7 +7,7 @@
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 USER_PASS="$(date | base64)"
 APT_APPS=( ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget )
-NEW_USER_ID="0000"
+#NEW_USER_ID="0000"
 
 # Remover potenciais bloqueios ao gerenciador de pacotes.
 sudo rm /var/lib/dpkg/lock-frontend
@@ -18,7 +18,8 @@ sudo apt update && sudo apt upgrade -y
 
 # Add WP-CLI.
 
-# Instalar dependências e adicionar usuário ao grupo 'docker'.
+# Instalar dependências.
+# Adicionar usuário ao grupo 'docker'.
 sudo apt install ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget -y && sudo usermod -aG docker $USER
 
 # Configurar e habilitar firewall.
@@ -35,6 +36,8 @@ sudo systemctl enable docker
 # Criar um usuário sem permissões para gerenciar os containers.
 # Capturar PID com >NEW_USER_ID=$(id nomedousuario)
 
+# Gerar certificado SSL auto-gerado (OpenSSL).
+
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
 # Alterar permissão do workspace.
@@ -50,8 +53,15 @@ git config --global user.name "Paulo Gobetti"
 git config --global user.email "paulogobettig@outlook.com"
 git config --global core.editor nano
 
+# Gerar chave SSH.
+
+# = = = = = =
+
 # Remover arquivos de instalação.
+sudo rm /home/$USER/install.sh /home/$USER/sudo.sh /home/$USER/settings.json
 
 # Remover cache deb.
 
-echo "Instalação finalizada com sucesso. VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
+echo "Instalação finalizada com sucesso."
+echo "Não se esqueça das chaves SSH e SSL."
+echo "Anote sua senha e acesse o VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
