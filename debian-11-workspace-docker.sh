@@ -4,10 +4,21 @@
 #
 # # # #
 
+# Capturar IP.
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
+
+# Gerar senha VSCode.
 USER_PASS="$(date | base64)"
+
 APT_APPS=( ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget )
+
+# Criar e configurar novo usuário.
 #NEW_USER_ID="0000"
+
+# Gerar senha SSH.
+_PASS_1="$(whoami | base64)" && _PASS_2="$(uname -m | base64)" && SSH_PASS=$_PASS_1$_PASS_2
+
+# = = = = = = = = = = = = = =
 
 # Remover potenciais bloqueios ao gerenciador de pacotes.
 sudo rm /var/lib/dpkg/lock-frontend
@@ -30,13 +41,13 @@ sudo ufw allow 80
 sudo ufw allow 8443
 sudo ufw enable
 
-# Habilitar Docker na inicialização.
+# Adicionar Docker à inicialização.
 sudo systemctl enable docker
 
 # Criar um usuário sem permissões para gerenciar os containers.
 # Capturar PID com >NEW_USER_ID=$(id nomedousuario)
 
-# Gerar certificado SSL auto-gerado (OpenSSL).
+# Gerar certificado SSL auto (OpenSSL).
 
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
@@ -53,8 +64,11 @@ git config --global user.name "Paulo Gobetti"
 git config --global user.email "paulogobettig@outlook.com"
 git config --global core.editor nano
 
+#git remote set-url
+
 # Gerar chave SSH.
-ssh-keygen -t ed25519 -C "paulogobettig@outlook.com"
+# Falta setar o diretório + nome personalizado.
+ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$USER_PASS"
 
 # = = = = = =
 
