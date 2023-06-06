@@ -54,6 +54,7 @@ git config --global user.email "paulogobettig@outlook.com"
 git config --global core.editor nano
 
 # Gerar chave SSH.
+ssh-keygen -t ed25519 -C "paulogobettig@outlook.com"
 
 # = = = = = =
 
