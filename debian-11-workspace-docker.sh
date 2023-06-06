@@ -8,7 +8,7 @@
 LOCAL_IP="$(hostname -I | cut -f1 -d' ')"
 
 # Gerar senha VSCode.
-USER_PASS="$(date | base64)"
+VSCODE_PASS="$(date | base64)"
 
 APT_APPS=( ufw ssh openssh-client curl git docker.io docker-compose apt-utils php-xml libc6 libstdc++6 python3-minimal ca-certificates tar openssh-server bash wget )
 
@@ -52,7 +52,7 @@ sudo systemctl enable docker
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
 # Alterar permissão do workspace.
-sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$USER_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown $USER:docker /home/$USER/.workspace -R
+sudo docker run -d --restart always --name=vscode -e PUID=1000 -e PGID=1000 -e TZ=America/Sao_Paulo -e PASSWORD=$VSCODE_PASS -e DEFAULT_WORKSPACE=/.workspace -p 8443:8443 -v /home/$USER/.workspace:/.workspace linuxserver/code-server:latest && sudo chown $USER:docker /home/$USER/.workspace -R
 
 # Configurar VSCode.
 wget https://raw.githubusercontent.com/paulogobetti/scripts/main/.vscode/settings.json -O /home/$USER/settings.json && sudo docker container exec vscode mkdir /config/data/User/ && sudo docker cp /home/$USER/settings.json vscode:/config/data/User/
@@ -68,7 +68,9 @@ git config --global core.editor nano
 
 # Gerar chave SSH.
 # Falta setar o diretório + nome personalizado.
-ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$USER_PASS"
+ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$SSH_PASS"
+
+GITHUB_KEY="$(cat /home/$USER/.ssh/id_ed25519.pub)"
 
 # = = = = = =
 
@@ -79,4 +81,5 @@ sudo rm /home/$USER/install.sh /home/$USER/sudo.sh /home/$USER/settings.json
 
 echo "Instalação finalizada com sucesso."
 echo "Não se esqueça das chaves SSH e SSL."
-echo "Anote sua senha e acesse o VSCode em $LOCAL_IP:8443, Senha: $USER_PASS"
+echo "Anote sua senha e acesse o VSCode em $LOCAL_IP:8443, Senha: $VSCODE_PASS"
+echo "Chave SSH a ser adicionada ao GitHub: $GITHUB_KEY"
