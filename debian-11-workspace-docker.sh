@@ -47,7 +47,7 @@ sudo systemctl enable docker
 # Criar um usuário sem permissões para gerenciar os containers.
 # Capturar PID com >NEW_USER_ID=$(id nomedousuario)
 
-# Gerar certificado SSL auto (OpenSSL).
+# Gerar certificado SSL auto-assinado (OpenSSL).
 
 # Criar container do VSCode.
 # Alterar propriedade do workspace.
@@ -69,6 +69,9 @@ git config --global core.editor nano
 # Gerar chave SSH.
 ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.com" -P "$SSH_PASS" && GITHUB_KEY="$(cat /home/$USER/.ssh/id_ed25519.pub)"
 
+# Aumentar o limite de user watches do servidor. 
+echo fs.inotify.max_user_watches=681984 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 # = = = = = =
 
 # Remover arquivos de instalação.
@@ -76,6 +79,7 @@ sudo rm /home/$USER/install.sh /home/$USER/sudo.sh /home/$USER/settings.json
 
 # Remover cache deb.
 
+# Lebretes e info final.
 echo "Instalação finalizada com sucesso."
 echo "Não se esqueça das chaves SSH e SSL."
 echo "Anote sua senha e acesse o VSCode em $LOCAL_IP:8443, Senha: $VSCODE_PASS"
