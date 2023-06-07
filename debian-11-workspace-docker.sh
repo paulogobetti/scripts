@@ -2,6 +2,8 @@
 #
 # wget https://raw.githubusercontent.com/paulogobetti/scripts/main/debian-11-workspace-docker.sh -O /home/$USER/install.sh && chmod +x install.sh && ./install.sh
 #
+# curl -s "https://laravel.build/opencommerce?with=mysql,redis" | bash
+#
 # # # #
 
 # Capturar IP.
