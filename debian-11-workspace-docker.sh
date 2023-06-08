@@ -77,7 +77,7 @@ echo fs.inotify.max_user_watches=681984 | sudo tee -a /etc/sysctl.conf && sudo s
 # Setar alias para o Sail
 # /home/$USER/bashrc
 # Adicionar linha abaixo.
-# alias sail="./vendor/bin/sail --env=local"
+# alias sail="./vendor/bin/sail"
 
 # = = = = = =
 
