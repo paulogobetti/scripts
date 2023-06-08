@@ -74,6 +74,11 @@ ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519 -C "paulogobettig@outlook.c
 # Aumentar o limite de user watches do servidor. 
 echo fs.inotify.max_user_watches=681984 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
+# Setar alias para o Sail
+# /home/$USER/bashrc
+# Adicionar linha abaixo.
+# alias sail="./vendor/bin/sail --env=local"
+
 # = = = = = =
 
 # Remover arquivos de instalação.
