@@ -4,6 +4,8 @@
 #
 # curl -s "https://laravel.build/opencommerce?with=mysql,redis" | bash
 #
+# docker run -d -p 80:80 --name replay --volume /home/$USER/.workspace/replay:/var/www/html php:7.2-apache bash -c "apt-get update && apt-get install -y python3 && apache2-foreground"
+#
 # # # #
 
 # Capturar IP.
