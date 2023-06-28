@@ -52,6 +52,10 @@ wget -r -np -nH -A "virtualbox-*_$RELEASE_VERSION*Ubuntu~focal_amd64.deb" $DOWNL
 
 # Instalar miniaturas.
 
+# Configurar aliases.
+# VBoxManage
+# Composer
+
 # Configurar iptables.
 # Bloquear ping.
 # Habilitar firewall.
